@@ -530,7 +530,7 @@ def location_page(location):
         </body>
     </html>
     """
-    return render_template_string(html, location_name=location_name, corrected_plot=corrected_plot, tide_plot=tide_plot, location_image_path=location_image_path, gfs_timesteps=gfs_timesteps, ecmwf_timesteps=ecmwf_timesteps, corrected_timesteps=corrected_timesteps, gfs_forecast_data=gfs_forecast_data, ecmwf_forecast_data=ecmwf_forecast_data, corrected_forecast_data=corrected_forecast_data, arrow_positioning=arrow_positioning)
+    return render_template_string(html, location=location, location_name=location_name, corrected_plot=corrected_plot, tide_plot=tide_plot, location_image_path=location_image_path, gfs_timesteps=gfs_timesteps, ecmwf_timesteps=ecmwf_timesteps, corrected_timesteps=corrected_timesteps, gfs_forecast_data=gfs_forecast_data, ecmwf_forecast_data=ecmwf_forecast_data, corrected_forecast_data=corrected_forecast_data, arrow_positioning=arrow_positioning)
 
 # Serve forecast plots dynamically by model
 @app.route("/forecast_plots/<model>/<filename>")
