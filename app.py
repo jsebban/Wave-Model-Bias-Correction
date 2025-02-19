@@ -360,7 +360,7 @@ def location_page(location):
 
                     const imageContainer = document.getElementById('location-image-container');
                     imageContainer.innerHTML = `
-                        <img src="{{ url_for('static', filename='location_images/' + location_name + '.png') }}" alt="{{ location_name }}">
+                        <img src="{{ url_for('static', filename='location_images/' + location + '.png') }}" alt="{{ location_name }}">
                         <div class="key">
                             <div class="key-item">
                                 <div class="key-color" style="background: red;"></div>
@@ -523,7 +523,7 @@ def location_page(location):
             </div>
             <select id="timestep-selector" onchange="updateAnnotations()"></select>
             <div id="location-image-container">
-                <img src="{{ url_for('static', filename='location_images/' + location_name + '.png') }}" alt="{{ location_name }}">
+                <img src="{{ url_for('static', filename='location_images/' + location + '.png') }}" alt="{{ location_name }}">
             </div>
 
             <p><a href="/">Back to All Locations</a></p>
