@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template_string, send_from_directory, jsonify
+from flask import Flask, request, render_template_string, send_from_directory
 from functools import wraps
 import os
 import pandas as pd
