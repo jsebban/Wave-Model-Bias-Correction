@@ -212,18 +212,18 @@ def location_page(location):
     location_name = title_info.get(location, [location])[0]
 
     location_image = f"{location}.png"
-    location_image_path = f"/static/location_images/{location}.png"
+    location_image_path = os.path.join('static', 'location_images', f"{location}.png")
 
     # Load the forecast DataFrames
-    gfs_location_forecast_df = pd.read_csv(fr'static\forecast_dfs\gfs\{location}.csv')
+    gfs_location_forecast_df = pd.read_csv(os.path.join('static', 'forecast_dfs', 'gfs', f'{location}.csv'))
     gfs_timesteps = gfs_location_forecast_df["DateTime"].tolist()
     gfs_forecast_data = gfs_location_forecast_df.to_dict(orient="records")
 
-    ecmwf_location_forecast_df = pd.read_csv(fr'static\forecast_dfs\ecmwf\{location}.csv')
+    ecmwf_location_forecast_df = pd.read_csv(os.path.join('static', 'forecast_dfs', 'ecmwf', f'{location}.csv'))
     ecmwf_timesteps = ecmwf_location_forecast_df["DateTime"].tolist()
     ecmwf_forecast_data = ecmwf_location_forecast_df.to_dict(orient="records")
 
-    corrected_location_forecast_df = pd.read_csv(fr'static\forecast_dfs\corrected\{location}.csv')
+    corrected_location_forecast_df = pd.read_csv(os.path.join('static', 'forecast_dfs', 'corrected', f'{location}.csv'))
     corrected_timesteps = corrected_location_forecast_df["DateTime"].tolist()
     corrected_forecast_data = corrected_location_forecast_df.to_dict(orient="records")
 
