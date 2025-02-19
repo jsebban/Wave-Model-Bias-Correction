@@ -116,7 +116,7 @@ position_ranges = {
     }
 
 # Flask app initialization
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 # Directory paths
 FORECAST_PLOTS_DIR = 'forecast_plots'
