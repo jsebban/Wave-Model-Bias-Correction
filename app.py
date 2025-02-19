@@ -123,8 +123,8 @@ FORECAST_PLOTS_DIR = 'forecast_plots'
 TIDE_PLOTS_DIR = 'tide_plots'
 
 # Password protection
-USERNAME = "yourusername"
-PASSWORD = "yourpassword"
+USERNAME = "SurfingAustralia"
+PASSWORD = ""
 
 def password_required(f):
     @wraps(f)
@@ -207,8 +207,6 @@ def index():
 @app.route("/location/<location>")
 @password_required
 def location_page(location):
-    gfs_plot = next((f for f in os.listdir(os.path.join(FORECAST_PLOTS_DIR, "GFSWave-v16")) if f.startswith(location)), None)
-    ecmwf_plot = next((f for f in os.listdir(os.path.join(FORECAST_PLOTS_DIR, "ECMWF-WAM")) if f.startswith(location)), None)
     corrected_plot = next((f for f in os.listdir(os.path.join(FORECAST_PLOTS_DIR, "corrected")) if f.startswith(location)), None)
     tide_plot = next((t for t in os.listdir(TIDE_PLOTS_DIR) if t.startswith(location)), None)
     location_name = title_info.get(location, [location])[0]
@@ -470,8 +468,6 @@ def location_page(location):
                     // Trigger updateAnnotations with the selected timestep
                     updateAnnotations();
                     
-                    // Update the iframe source for the selected model
-                    document.getElementById('forecast-iframe').src = "/forecast_plots/" + model + "/" + plotFilename;
                 }
 
 
@@ -535,7 +531,7 @@ def location_page(location):
         </body>
     </html>
     """
-    return render_template_string(html, location_name=location_name, gfs_plot=gfs_plot, ecmwf_plot=ecmwf_plot, corrected_plot=corrected_plot, tide_plot=tide_plot, location_image_path=location_image_path, gfs_timesteps=gfs_timesteps, ecmwf_timesteps=ecmwf_timesteps, corrected_timesteps=corrected_timesteps, gfs_forecast_data=gfs_forecast_data, ecmwf_forecast_data=ecmwf_forecast_data, corrected_forecast_data=corrected_forecast_data, arrow_positioning=arrow_positioning)
+    return render_template_string(html, location_name=location_name, corrected_plot=corrected_plot, tide_plot=tide_plot, location_image_path=location_image_path, gfs_timesteps=gfs_timesteps, ecmwf_timesteps=ecmwf_timesteps, corrected_timesteps=corrected_timesteps, gfs_forecast_data=gfs_forecast_data, ecmwf_forecast_data=ecmwf_forecast_data, corrected_forecast_data=corrected_forecast_data, arrow_positioning=arrow_positioning)
 
 # Serve forecast plots dynamically by model
 @app.route("/forecast_plots/<model>/<filename>")
