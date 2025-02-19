@@ -211,7 +211,6 @@ def location_page(location):
     tide_plot = next((t for t in os.listdir(TIDE_PLOTS_DIR) if t.startswith(location)), None)
     location_name = title_info.get(location, [location])[0]
 
-    location_image = f"{location}.png"
     location_image_path = os.path.join('static', 'location_images', f"{location}.png")
 
     # Load the forecast DataFrames
